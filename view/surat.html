@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igracias - Universitas Bengkulu</title>
+    <link rel="shortcut icon" href="/src/Logo.svg">
+
+    <!-- stylesheets tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
+    <!-- alpine js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+</head>
+
+<body id="home" class="overflow-x-hidden h-screen bg-black"   x-data="{ modelOpen: false,id: '',title:''  }"   >
+
+    <div class="hero absolute z-0 w-screen h-screen">
+        <img src="../src/7.jpg"class="hero__heading object-cover hover:object-scale-down   absolute z-0 w-screen h-screen bg-img " style="filter: grayscale(100%);">
+
+	</div>
+
+	<div class="hero hero--secondary absolute z-0 w-screen h-screen" aria-hidden="true" data-hero>
+        <img src="../src/7.jpg" class="hero__heading object-cover hover:object-scale-down heading_mask absolute z-0 w-screen h-screen  " >
+
+	</div>
+    <div class=" font-[Poppins] 2xl:text-xl font-nunito  h-screen   text-center      overflow-hidden  duration-300 transform   transistion transition    bg-opacity-25  bg-gray-800" >
+        <!-- Preloader Start -->
+        <div x-data="{ show: false }" x-transition:enter="transition duration-700" style="z-index: 99;"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            class="bg-white rounded p-4" x-show="show">
+            <div id="loader-wrapper">
+                <div id="loader-logo">
+                    <div id="loader"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader Start -->
+
+        <!-- navbar  -->
+        <nav   x-data="{isOpen: false }" class="  top-0 z-10 w-full    font-[Poppins]   bg-[#184096] ">
+        <div   class="  py-6 mx-auto duration-300 bg-transparent    ">
+            <div class="lg:flex mx-auto container px-5   lg:items-center lg:justify-between">
+                <div class="flex items-center justify-between">
+                    <!-- logo -->
+                    <a href="/view/home.html" class="flex   text-white   mx-4 md:ml-6">
+                        <img src="/src/Logo.svg" class="md:w-14 md:h-14 w-12 h-12">
+                        <div class="ml-3    font-sans text-left ">
+                            <strong class=" text-2xl md:text-3xl font-extrabold   text-sh uppercase">igracias</strong>
+                            <p class="text-[13px] md:text-[16px]    text-slate-300     uppercase -mt-2
+                                relative">
+                                UNIVERSITAS BENGKULU</p>
+                        </div>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <div class="flex lg:hidden">
+                        <button x-cloak @click="isOpen = !isOpen" type="button"
+                            class="text-gray-200 hover:text-gray-300 focus:outline-none focus:text-gray-100 "
+                            aria-label="toggle menu">
+                            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                            </svg>
+                            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-10 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-[#184096]   md:bg-none menu-navbar text-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto
+                    lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center " id="list-menu">
+                    <div class="flex flex-col -mx-6 lg:flex-row lg:items-center   text-[16px]  duration-300 transform " >
+                        <!-- if menu active "active-menu" else "text-gray-600" -->
+                         <div    @click="modelOpen =!modelOpen;id =1, title='LOGIN'  " :class="{ 'fade-out-bottom': modelOpen, 'fade-in-bottom': !modelOpen }"
+                                    class="px-2 py-2 mx-2 mt-2   text-gray-600 lg:text-white  text-[14px] text-sh transition-colors  duration-300 transform rounded-md
+                                lg:mt-0 hover:text-[#ffda62] ">LOGIN</div>
+                            <div    @click="modelOpen =!modelOpen;id =2, title='FAKULTAS'  " :class="{ 'fade-out-bottom ': modelOpen, 'fade-in-bottom ': !modelOpen }"
+                                    class="px-2 py-2 mx-2 mt-2   text-gray-600 lg:text-white  text-[14px] text-sh transition-colors  duration-300 transform rounded-md
+                                lg:mt-0 hover:text-[#ffda62] ">FAKULTAS</div>
+                                <div    @click="modelOpen =!modelOpen;id =3, title='BIRO DAN LEMBAGA'  " :class="{ 'fade-out-bottom ': modelOpen, 'fade-in-bottom ': !modelOpen }"
+                                    class="px-2 py-2 mx-2 mt-2   text-gray-600 lg:text-white  text-[14px] text-sh transition-colors  duration-300 transform rounded-md
+                                lg:mt-0 hover:text-[#ffda62] ">BIRO DAN LEMBAGA</div>
+                                <div    @click="modelOpen =!modelOpen;id =4, title='UNIT'  " :class="{ 'fade-out-bottom ': modelOpen, 'fade-in-bottom ': !modelOpen }"
+                                    class="px-2 py-2 mx-2 mt-2   text-gray-600 lg:text-white  text-[14px] text-sh transition-colors  duration-300 transform rounded-md
+                                lg:mt-0 hover:text-[#ffda62] ">UNIT</div>
+                                <div    @click="modelOpen =!modelOpen;id =5, title='OTHER'  " :class="{ 'fade-out-bottom ': modelOpen, 'fade-in-bottom ': !modelOpen }"
+                                    class="px-2 py-2 mx-2 mt-2   text-gray-600 lg:text-white  text-[14px] text-sh transition-colors  duration-300 transform rounded-md
+                                lg:mt-0 hover:text-[#ffda62] ">OTHER</div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </nav>
+        <!-- end navbar  -->
+
+         <div class="relative flex     z-10  -mt-2   ">
+
+            <div class="svg-top top-1">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-yellow-300 opacity-40 h-20">
+                    <path d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+                </svg>
+            </div>
+            <div class="svg-top top-1">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-yellow-500 h-16">
+                    <path d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+                </svg>
+            </div>
+
+            <div class="svg-top top-0">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="fill-[#184096] h-16">
+
+                <path   d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+         <div
+            class="  text-center pt-20                  ">
+
+
+            <div class="  max-w-7xl px-4 sm:px-6 lg:px-12 relative bg-transparent   flex flex-wrap flex-col md:flex-row items-center  ">
+
+                <!--Left Col-->
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class=" 2xl:pt-44     md:mt-16 w-full  2xl:w-2/3 md:w-1/2   justify-center items-center md:px-5 text-center md:text-right
+                      px-4   z-20">
+
+                    <!-- <img src="/src/Head-UNIB-3.png" class="w-2/3 mx-auto md:ml-auto md:mr-0    mb-5"> -->
+
+                    <p class="mt-2 text-2xl  text-shadow  lg:text-4xl font-extrabold text-yellow-500 text-center md:text-right
+                            ">
+                        UNIVERSITAS BENGKULU
+                    </p>
+                    <p class=" my-2 leading-7 text-[14px] mb-8 text-shadow2  text-white
+                            text-center md:text-right ">
+                        Visi UNIB menjadi universitas kelas dunia pada tahun 2025. dan memiliki misi Mengembangkan pendidikan dan penelitian berkelas dunia, Menghasilkan karya berstatus Hak atas Kekayaan Intelektual (HKI), Melaksanakan pengabdian sesuai dengan kebutuhan masyarakat lokal, nasional, dan internasional, Mengembangkan sistem tata kelola universitas yang baik dan bersih.
+                    </p>
+
+
+                </div>
+                <div data-aos="zoom-in-left" class="mt-16 w-full md:w-[60%] justify-center items-start md:px-5 text-center md:text-right
+                      px-4   z-30">
+                    <!-- <img src="/src/Logo.svg" class="w-1/2 h-1/2 mx-auto img-sh"> -->
+
+                </div>
+            </div>
+
+        </div>
+        <!-- modal  -->
+<div x-show="modelOpen" style="z-index: 20 !important;"  class=" absolute  inset-0 z-10 overflow-y-auto"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div
+        class="flex items-end    overflow-hidden px-4 text-center   sm:p-0">
+        <div x-cloak x-show="modelOpen" style="z-index: 20;"   :class="{ 'fadeInUp': modelOpen, 'fadeInDown': !modelOpen }"
+            class="  w-full max-w-lg  p-8  container   text-left transition-all transform  h-screen absolute bottom-0 right-0 overflow-auto bg-black opacity-80 rounded-lg shadow-xl  ">
+            <div class="flex items-center justify-between space-x-4">
+                <h1 class="text-xl font-bold text-yellow-500  "> <span
+                        class="font-bold  " x-text="title"></span> </h1>
+
+                <button @click="modelOpen = false"
+                    class="text-yellow-500    focus:outline-none hover:text-yellow-300 relative   ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+            </div>
+                <template x-if="id=='1'"  >
+                    <form>
+                        <div class="my-2 mt-6 ">
+                            <label
+                                class=" after:content-['*'] after:text-red-500 font-semibold  text-gray-300
+                                after:ml-2 text-sm pb-2">Email</label>
+                            <input type="text"
+                                class=" w-full rounded-lg border-2 mt-1  border-yellow-500
+                                bg-transparent
+                                px-3 py-2.5 text-sm font-normal   text-gray-300 transition-all duration-500
+                                 placeholder:text-yellow-100 focus:border-white
+                                 focus:ring-yellow-500
+                                 focus:shadow-[-4px_4px_10px_0px_#eab308] "
+                                placeholder="Email" />
+                        </div>
+                        <div class="my-2  " x-data="{ show: false }">
+                            <label
+                                class=" after:content-['*'] after:text-red-500 font-semibold  text-gray-300
+                                after:ml-2 text-sm pb-2">Password</label>
+                            <div class="relative flex items-center ">
+                                <input :type=" show ? 'text': 'password' " type="password"
+                                    class=" w-full rounded-lg border-2 mt-1  border-yellow-500
+                                bg-transparent
+                                px-3 py-2.5 text-sm font-normal   text-gray-300 transition-all duration-500
+                                 placeholder:text-yellow-100 focus:border-white
+                                 focus:ring-yellow-500
+                                 focus:shadow-[-4px_4px_10px_0px_#eab308] "
+                                    placeholder="Password" />
+                                <span
+                                    class="absolute right-2 pt-1 bg-transparent flex items-center justify-center cursor-pointer "
+                                    @click="show = !show">
+                                    <svg x-show="!show" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                        </path>
+                                    </svg>
+
+                                    <svg x-show="show" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-6 w-full ">
+                            <button class=" h-full  rounded-lg border-2   mx-auto mt-1 w-full text-white  border-yellow-600  bg-yellow-500   duration-300 transform  hover:bg-yellow-600 font-medium tracking-widest py-2
+                              text-sm
+                               focus:shadow-[-4px_4px_10px_0px_#eab308]  ">LOGIN</button>
+                        </div>
+                    </form>
+                </template>
+                <template x-if="id=='2'"  >
+                    <div class="mt-5 grid  grid-cols-1">
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-keguruan-dan-ilmpu-pendidikan/">Fakultas KIP</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-hukum/">Fakultas Hukum</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-pertanina/">Fakultas Pertanian</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/economis-and-business/">Fakultas Ekonomi dan Bisnis</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-ilmu-sosial-dan-ilmu-politik/">Fakultas Isipol</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-matematika-dan-ilmu-pengetahuan-alam/">Fakultas Matematika dan IPA</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-teknik/">Fakultas Teknik</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/fakultas/fakultas-kedokteran/">Fakultas Kedokteran dan Ilmu Kesehatan</a>
+
+                    </div>
+                </template>
+                <template x-if="id=='3'"  >
+                    <div class="mt-5 grid  grid-cols-1">
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/lembaga/biro-perencanaan-pembelajaran-dan-kemahasiswaan/">Biro PPK</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/lembaga/biro-umum-dan-sumber-daya/">Biro USD</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/lembaga/lembaga-penelitian-dan-pengabdian-kepada-masyarakat/">LPPM</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/lembaga/lembaga-pengembangan-teknologi-informasi-dan-komunikasi/">LPTIK</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/lembaga/lembaga-penjaminan-mutu-dan-pengembangan-pembelajaran/">LPMPP</a>
+                    </div>
+                </template>
+                <template x-if="id=='4'"  >
+                    <div class="mt-5 grid  grid-cols-1">
+                        <div class="w-full bg-gray-500 bg-opacity-50 py-3 -ml-3 pl-3 text-yellow-500 font-bold my-3">UPT</div>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/service-unit/upt-perpustakaan/">UPT Perpustakaan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/service-unit/upt-pengembangan-kompetensi-mahasiswa/">UPT PKM</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/service-unit/unit-kearsipan/">UPT Kearsipan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://ksli.unib.ac.id/">UPT Kerja Sama dan Layanan Internasional</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/service-unit/upt-bahasa/">UPT Bahasa</a>
+                        <div class="w-full bg-gray-500 bg-opacity-50 py-3 -ml-3 pl-3 text-yellow-500 font-bold my-3">UNIT PENDUKUNG</div>
+
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/unit-pendukung/badan-pengembangan-bisnis/">Badan Pengembangan Bisnis</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/unit-pendukung/unit-layanan-pengadaan/">Unit Layanan Pengadaan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://www.unib.ac.id/unit-pendukung/layanan-pengadaan-secara-elektronik/">LPSE</a>
+
+
+                    </div>
+                </template>
+                <template x-if="id=='5'"  >
+                    <div class="mt-5 grid  grid-cols-1">
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://regmaba.unib.ac.id/">Sistem Pendaftaran Mahasiswa Baru</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://pak.unib.ac.id">Sistem Portal Akademik</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://wisudaonline.unib.ac.id">Sistem Pendaftaran Wisuda</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://presensi.unib.ac.id">Sistem Absensi Perkuliahan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://kas.unib.ac.id">Sistem Pendaftaran Kuliah Antar Semester</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://siakad.unib.ac.id">Sistem Akademik UNIB</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://sikkn.unib.ac.id">Sistem KKN Online</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://simpeg.unib.ac.id">Sistem Kepegawaian</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://siremun.unib.ac.id">Sistem Remunerasi</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://sirenba.unib.ac.id/informasi">Sistem Perencanaan Biro PPK UNIB</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://absensi.unib.ac.id">Sistem Absen Dosen dan Karyawan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://pin.unib.ac.id">Sistem Pembuatan PIN Portal UNIB</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://elearning.unib.ac.id">Sistem e-Learning</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://library.unib.ac.id/">Sistem Perpustakaan</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://simas.unib.ac.id">Sistem Surat Menyurat</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="https://slims.unib.ac.id/">Sistem Pencarian Buku</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://ejournal.unib.ac.id">Sistem e-Journal</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://repository.unib.ac.id">Sistem Repository UNIB</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://siepel.unib.ac.id">Sistem Informasi Evaluasi Pembelajaran</a>
+                        <a class="text-white hover:text-yellow-300 text-sm py-1  hover:underline w-full" href="http://sipanda.unib.ac.id">Sistem Informasi Pangkalan Data</a>
+
+
+
+                    </div>
+                </template>
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- end modal  -->
+
+
+
+<img src="../src/rafflesia-arnoldii-malaysia-clipart-png.webp.svg" class="2xl:w-96 2xl:h-96 lg:h-72 lg:w-72 md:h-52 md:w-52 h-32 w-32 2xl:-mr-28 2xl:-mb-20 lg:-mr-20  lg:-mb-8  md:-mr-16 mb-24 md:mb-10 -mr-12 duration-200 transform absolute bottom-0 right-0 z-50 sh-rafflesia"  >
+        <!-- Footer  -->
+        <footer class=" absolute bottom-0 w-full z-20 ">
+            <div class="   relative bottom-0">
+
+<div class="custom-shape-divider-bottom-1696347808">
+    <svg  class="fill-yellow-300 opacity-70 2xl:h-[130px] lg:h-28 md:h-20 h-16"   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+</div>
+        <div class="svg-bottom absolute">
+            <svg class="fill-yellow-300  bottom-1 h-20" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="svg-bottom absolute">
+            <svg class="fill-yellow-500 bottom-1 h-14" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="svg-bottom absolute">
+            <svg data-name="Layer 1" class="fill-[#184096]  h-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+
+                <path   d="M741,116.23C291,117.43,0,27.57,0,6V120H1200V6C1200,27.93,1186.4,119.83,741,116.23Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+
+
+
+
+            <div class="px-12 mx-auto py-4   flex flex-wrap flex-col sm:flex-row  bg-[#184096]  ">
+                <p class="text-gray-300 mx-auto max-w-3xl   text-sm text-center  ">Integrasi Sistem Universitas Bengkulu (IGRACIAS) © Lembaga Pengembangan Teknologi Informasi dan Komunikasi (LPTIK).
+                </p>
+            </div>
+        </footer>
+
+
+        <!-- end Footer -->
+
+    </div>
+
+
+
+
+</body>
+
+<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+<!-- script -->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="scripts.js"></script>
+
+
+
+
+
